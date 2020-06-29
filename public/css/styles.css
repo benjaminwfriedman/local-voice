@@ -1,0 +1,30 @@
+
+
+
+#main{
+  margin-left: 3%;
+}
+
+.form-group{
+  width : 70%;
+}
+
+
+
+
+.action-items{
+  text-align: center;
+}
+
+.email-section{
+  padding-bottom: 40px;
+}
+
+.email-link{
+  margin-bottom: 5%;
+  font-size: 1.5rem;
+}
+
+.org-name{
+  color: #fa1616;
+}

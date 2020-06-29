@@ -1,0 +1,58 @@
+<%- include("header") -%>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to Local Voice</h1>
+  <p class="lead">To find action items to support anti-racist goals in your area, please enter your zip code below.</p>
+  <hr class="my-4">
+  <p>This is a completly open source tool and we will never use your information for anything.</p>
+  <form action="/zip" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Zipcode</label>
+    <input type="text" class="form-control" id="zipcode" name='zip' value="<%=zipcode%>" aria-describedby="emailHelp">
+  </div>
+  <button type="submit" class="btn btn-primary" name="button" value='hi'>Submit</button>
+</form>
+</div>
+<div class="action-items">
+  <h3 class='main-header'>These are the action items in <%=zipcode%></h3>
+</div>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+
+      <%  actionItems.forEach(function(item){ %>
+        <% var dateObj = item.date_added %>
+        <% var month = dateObj.getUTCMonth() +1 %>
+        <% var day = dateObj.getUTCDate()%>
+        <% var year = dateObj.getUTCFullYear() %>
+        <% var newdate = month + "/" + day + "/" + year; %>
+
+
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="<%=item.imgLoc%>" width="100%" >
+              <div class="card-body">
+                <h5 class="card-title"><%=item.name%></h5>
+                <p class="card-text"><%=item.desc%></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <form action="/view" method="post">
+                       <input type="hidden" id="hidden" name="zip" value="<%=zipcode%>">
+                      <button type="submit" class="btn btn-sm btn-outline-secondary" name='action' value='<%=item.name%>'>View</button>
+                    </form>
+
+
+
+                  </div>
+                  <small class="text-muted"><%=newdate%></small>
+                </div>
+              </div>
+            </div>
+          </div>
+      <%  }); %>
+
+
+        </div>
+      </div>
+    </div>

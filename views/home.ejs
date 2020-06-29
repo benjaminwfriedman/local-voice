@@ -1,0 +1,14 @@
+<%- include("header") -%>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to Local Voice!</h1>
+  <p class="lead">To find action items to support anti-racist goals in your area, please enter your zip code below.</p>
+  <hr class="my-4">
+  <p>This is a completly open source tool and we will never use your information for anything.</p>
+  <form action="/zip" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Zipcode</label>
+    <input type="text" class="form-control" id="zipcode" name='zip' aria-describedby="emailHelp">
+  </div>
+  <button type="submit" class="btn btn-primary" name="button" value='hi'>Submit</button>
+</form>
+</div>
