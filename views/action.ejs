@@ -4,7 +4,6 @@
 <% official = officialsTitles[0] + ' ' + officialsNames[0]; %>
 <% body = body.replace("[Rep]", official);%>
 <% body = body.replace("[Zipcode]", zipcode);%>
-
 <div class="jumbotron">
   <h1 class="display-4"><%=actionTitle%></h1>
   <p class="lead"><%=actionDescription%></p>
@@ -48,7 +47,7 @@
       <% official = officialsTitles[i] + ' ' + officialsNames[i]; %>
       <% emailBody = emailBody.replace("[Rep]", official);%>
       <% emailBody = emailBody.replace("[Zipcode]", zipcode);%>
-      <a class='email-link' href="mailto:<%=emails[i]%>?subject=<%=actionHeader%>&body=<%=emailBody%>">Email <%=officialsTitles[i]%> <%=officialsNames[i]%></a>
+      <a id='<%=tagname%>' class='email-link' href="mailto:<%=emails[i]%>?subject=<%=actionHeader%>&body=<%=emailBody%>">Email <%=officialsTitles[i]%> <%=officialsNames[i]%></a>
       <br class="email-link">
 
   <%  } %>

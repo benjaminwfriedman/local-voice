@@ -39,7 +39,8 @@ const actionSchema = {
   body: String,
   zips: [String],
   imgLoc : String,
-  date_added : Date
+  date_added : Date,
+  tagname: String
 
 }
 
@@ -80,6 +81,8 @@ app.post("/addAction", upload.single('cover'), function(req, res){
   const city = req.body.cityCounty;
   const state = req.body.state;
   const title = req.body.name;
+  let tagname = "EC" + title + city + state;
+  tagname = tagname.replace(new RegExp(" ", "g"), "");
   const level = req.body.levels;
   const org = req.body.orgName;
   const description = req.body.desc;
@@ -122,6 +125,7 @@ app.post("/addAction", upload.single('cover'), function(req, res){
         org : org,
         desc: description,
         cityCounty: city,
+        tagname : tagname,
         state: state,
         header: emailHeader,
         body: emailBody,
@@ -155,7 +159,8 @@ app.post('/view', function(req, res){
       actionState : action.state,
       usersName: "",
       usersAddress: "",
-      inputName: "[NAME]"
+      inputName: "[NAME]",
+      tagname : action.tagname
 
     })
   });
@@ -179,6 +184,8 @@ app.post('/findReps', function(req, res){
     targetEmails = [];
     targetNames = [];
     targetOffices = [];
+    console.log(action.tagname);
+    console.log(action.cityCounty);
 
     var repsURL = 'https://www.googleapis.com/civicinfo/v2/representatives?address='+ addy + '&key=AIzaSyD9tdMYMzhS8dW5ElCE4ylRtkYOQEdawC4'
 
@@ -223,7 +230,8 @@ app.post('/findReps', function(req, res){
         actionDescription : action.desc,
         usersName : name,
         usersAddress : addy,
-        inputName: name
+        inputName: name,
+        tagname: action.tagname
 
 
       })
