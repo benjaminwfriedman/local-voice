@@ -47,7 +47,7 @@
       <% official = officialsTitles[i] + ' ' + officialsNames[i]; %>
       <% emailBody = emailBody.replace("[Rep]", official);%>
       <% emailBody = emailBody.replace("[Zipcode]", zipcode);%>
-      <a id='<%=tagname%>' class='email-link' href="mailto:<%=emails[i]%>?subject=<%=actionHeader%>&body=<%=emailBody%>" onclick=”ga(‘send’, ‘event’, [eventCategory], [eventAction], [eventLabel], [eventValue]);”>Email <%=officialsTitles[i]%> <%=officialsNames[i]%></a>
+      <a id='<%=tagname%>' class='email-link' href="mailto:<%=emails[i]%>?subject=<%=actionHeader%>&body=<%=emailBody%>" onclick= 'ga(‘send’, ‘event’, [eventCategory], [eventAction], [eventLabel], [eventValue]);'>Email <%=officialsTitles[i]%> <%=officialsNames[i]%></a>
       <br class="email-link">
 
   <%  } %>
