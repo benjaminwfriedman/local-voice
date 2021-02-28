@@ -24,7 +24,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 
-mongoose.connect("mongodb+srv://benny-admin:Rfacer123@cluster0-wxgm1.mongodb.net/resources", {
+mongoose.connect(*DatabaseURI*, {
   useNewUrlParser: true
 });
 
@@ -112,7 +112,7 @@ app.post("/addAction", upload.single('cover'), function(req, res){
 
     const today = new Date();
 
-    zipURL = "https://www.zipcodeapi.com/rest/tZkKeS4xZlwR7IWVPQKxvfhVJMVHlaPyUiYbukM2dUIbmSBMlNG7PUSvMsVN2Ruu/city-zips.json/";
+    zipURL = "https://www.zipcodeapi.com/rest/*APIKEY*/city-zips.json/";
     zipRequest = zipURL.concat(city, '/', state);
 
 
@@ -187,7 +187,7 @@ app.post('/findReps', function(req, res){
     console.log(action.tagname);
     console.log(action.cityCounty);
 
-    var repsURL = 'https://www.googleapis.com/civicinfo/v2/representatives?address='+ addy + '&key=AIzaSyD9tdMYMzhS8dW5ElCE4ylRtkYOQEdawC4'
+    var repsURL = 'https://www.googleapis.com/civicinfo/v2/representatives?address='+ addy + '&key=*GOOGLEAPIKEY*'
 
     request(repsURL, function(error, response, body){
       var city = JSON.parse(body).normalizedInput.city;
